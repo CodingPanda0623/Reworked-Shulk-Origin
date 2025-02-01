@@ -1,2 +1,2 @@
-# Reworked-Shulk-Origin
+# Reworked Shulk Origin
 Shulk Origin from Origins, reworked and edited
