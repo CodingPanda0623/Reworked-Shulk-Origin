@@ -1,0 +1,8 @@
+{
+    "hidden": true,
+    "type": "origins:effect_immunity",
+    "effects": [
+        "minecraft:levitation",
+        "minecraft:slow_falling"
+    ]
+}

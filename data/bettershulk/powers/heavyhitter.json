@@ -1,0 +1,27 @@
+{
+    "name": "Heavy Hitter",
+    "description": "Your strong, bulky arms enable you to deal more damage, but it unfortunately comes at the cost of a slower recovery.",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "minecraft:textures/mob_effect/strength.png",
+            "text": "You deal 3 more hearts of damage at the cost of -20% attack speed."
+        }
+    ],
+    "damage": {
+        "type": "origins:modify_damage_dealt",
+        "modifier":{
+            "operation": "addition",
+            "value": 6
+        }
+    },
+    "cooldown": {
+        "type": "origins:modify_attribute",
+        "attribute": "minecraft:generic.attack_speed",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": -0.2
+        }
+    }
+}

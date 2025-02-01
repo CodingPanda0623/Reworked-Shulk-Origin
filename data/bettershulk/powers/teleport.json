@@ -1,0 +1,65 @@
+{
+    "name": "Teleport",
+    "description": "Like a shulker, you can teleport a short distance (9 blocks). Sneak right click to activate. Only works if you're looking at a block.",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "sprite": "minecraft:textures/item/ender_pearl.png",
+            "text": "Teleport with %s"
+        }
+    ],
+    "tp": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:raycast",
+            "distance": 9,
+            "block": true,
+            "entity": false,
+            "shape_type": "collider",
+            "hit_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:trigger_cooldown",
+                        "power": "bettershulk:teleport_cooldown"
+                    },
+                    {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:entity.shulker.teleport"
+                    }
+                ]
+            },
+            "before_action": {
+                "type": "origins:set_fall_distance",
+                "fall_distance": 0
+            },
+            "command_at_hit": "tp @s ~ ~ ~"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "bettershulk:teleport_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "key": {
+            "key": "key.use"
+        }
+    },
+    "cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 300,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6
+        }
+    }
+}

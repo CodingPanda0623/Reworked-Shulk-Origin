@@ -1,0 +1,18 @@
+{
+    "name": "Shulker Inventory",
+    "description": "You have an extra inventory that does not drop on death. It's like an actual shulker box this time.",
+	"badges": [
+        {
+            "type": "origins:keybind",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Access with %s"
+        }
+    ],
+	"type": "origins:inventory",
+    "container_type": "chest",
+	"title": "Shulker Inventory",
+	"drop_on_death": false,
+	"key": {
+		"key": "key.origins.primary_active"
+	}
+}
