@@ -1,0 +1,31 @@
+{
+	"name": "Shulk",
+	"description": "Related to Shulkers, the bodies of the Shulk are outfitted with a protective shell-like skin and a hardened shell that they can close at will.",
+	"powers": [
+		"bettershulk:shulker_inventory",
+		"bettershulk:naturalarmor",
+		"origins:strong_arms",
+		"origins:strong_arms_break_speed",
+		"origins:more_exhaustion",
+		"bettershulk:forgegravitygauntlet",
+		"bettershulk:clammyhands",
+		"bettershulk:heavyhitter",
+		"bettershulk:teleport",
+		"bettershulk:dense",
+		"bettershulk:duplicate",
+		"bettershulk:fireshulkerbullet",
+		"bettershulk:effect_immunity",
+		"bettershulk:neutral",
+		"bettershulk:grounded",
+		"bettershulk:shell",
+		"bettershulk:shellbash",
+		"bettershulk:shellsmash",
+		"bettershulk:sticktowalls",
+		"bettershulk:shulkersounds",
+		"bettershulk:fire_cooldown"
+	],
+	"icon": "minecraft:shulker_shell",
+	"order": 4,
+	"impact": 1,
+	"loading_priority": 1
+}

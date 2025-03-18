@@ -1,0 +1,268 @@
+{
+    "name": "§8Black Hole",
+    "description": "You can unleash a devastating black hole, sucking in everything around it. This ability is exclusive to Shulks.",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 5,
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:fireblackhole_timer",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:fireblackhole_charge",
+                    "change": 1
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:block.end_portal_frame.fill"
+                }
+            ]
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "charge": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 7,
+        "max_action": {
+            "type": "origins:play_sound",
+            "sound": "minecraft:block.respawn_anchor.charge"
+        },
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 18
+        }
+    },
+    "not_in_use_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 2,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "not_in_use": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "bettershulk:fireblackhole_not_in_use_resource",
+            "change": -1
+        }
+    },
+    "reset": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "bettershulk:fireblackhole_not_in_use_resource",
+            "comparison":"==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:nbt",
+                            "nbt": "{CustomModelData:54897}"
+                        },
+                        {
+                            "type": "origins:nbt",
+                            "nbt": "{CustomModelData:54898}"
+                        },
+                        {
+                            "type": "origins:nbt",
+                            "nbt": "{CustomModelData:54899}"
+                        }
+                    ]
+                }
+            },
+            "if_action": {
+                "type": "origins:equipped_item_action",
+                "equipment_slot": "mainhand",
+                "action": {
+                    "type": "origins:modify",
+                    "modifier": "bettershulk:charge_0"
+                }
+            },
+            "else_action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{CustomModelData:54897}"
+                            },
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{CustomModelData:54898}"
+                            },
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{CustomModelData:54899}"
+                            }
+                        ]
+                    }
+                },
+                "if_action": {
+                    "type": "origins:equipped_item_action",
+                    "equipment_slot": "offhand",
+                    "action": {
+                        "type": "origins:modify",
+                        "modifier": "bettershulk:charge_0"
+                    }
+                }
+            }
+        }
+    },
+    "deplete": {
+        "type": "origins:action_over_time",
+        "interval": 6,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "bettershulk:fireblackhole_not_in_use_resource",
+                    "comparison":"==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "bettershulk:fire_cooldown",
+                    "comparison": "!=",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:fireblackhole_timer",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:fireblackhole_charge",
+                    "change": 0,
+                    "operation": "set"
+                }
+            ]
+        }
+    },
+    "fire": {
+        "type": "origins:active_self",
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "bettershulk:fireblackhole_charge",
+                    "comparison": "==",
+                    "compare_to": 7
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "bettershulk:fire_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:fireblackhole_charge",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:block.beacon.power_select"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:nbt",
+                            "nbt": "{CustomModelData:54899}"
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:equipped_item_action",
+                        "equipment_slot": "mainhand",
+                        "action": {
+                            "type": "origins:modify",
+                            "modifier": "bettershulk:charge_0"
+                        }
+                    },
+                    "else_action": {
+                        "type": "origins:equipped_item_action",
+                        "equipment_slot": "offhand",
+                        "action": {
+                            "type": "origins:modify",
+                            "modifier": "bettershulk:charge_0"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:trigger_cooldown",
+                        "power": "bettershulk:fire_cooldown"
+                    }
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:block.end_portal.spawn",
+                    "volume": 7
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 64,
+                    "command_at_hit": "summon armor_stand ~ ~ ~ {Tags:['black_hole'],Invisible:1b,Marker:1b,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"bettershulk:blackhole\",Data:{},Sources:[\"bettershulk:gravity_gauntlet\"]}]}},Glowing:1b,Pose:{Head:[180f,0f,0f]},ArmorItems:[{},{},{},{id:black_concrete,Count:1b}]}",
+                    "miss_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon armor_stand ^ ^ ^64 {Tags:['black_hole'],Invisible:1b,Marker:1b,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"bettershulk:blackhole\",Data:{},Sources:[\"bettershulk:gravity_gauntlet\"]}]}},Glowing:1b,Pose:{Head:[180f,0f,0f]},ArmorItems:[{},{},{},{id:black_concrete,Count:1b}]}"
+                    },
+                    "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 10"
+                }
+            ]
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    }
+}

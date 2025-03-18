@@ -1,0 +1,16 @@
+{
+    "name": "Sturdy Skin",
+    "description": "Even without wearing armor, your skin provides natural protection.",
+    "type": "origins:conditioned_attribute",
+    "condition": {
+        "type": "origins:resource",
+        "resource": "bettershulk:shell_resource",
+        "comparison": ">",
+        "compare_to": 0
+    },
+    "modifier": {
+        "attribute": "minecraft:generic.armor",
+        "value": 10,
+        "operation": "addition"
+    }
+}

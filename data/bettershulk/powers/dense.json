@@ -1,0 +1,11 @@
+{
+    "name": "Dense",
+    "description": "Due to your dense armor and shell, you cannot swim and sink straight down in water.",
+    "type": "origins:ignore_water",
+    "condition": {
+        "type": "origins:resource",
+        "resource": "bettershulk:shell_resource",
+        "comparison": ">",
+        "compare_to": 0
+    }
+}

@@ -1,0 +1,437 @@
+{
+    "name": "§5Gravitational Pull",
+    "description": "You can manipulate gravity and pull entities towards you with right click. This also charges your black hole ability.",
+    "type": "origins:active_self",
+    "cooldown": 5,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "bettershulk:fire_cooldown",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        {
+                            "type": "origins:resource",
+                            "resource": "bettershulk:fireblackhole_charge",
+                            "comparison": "<",
+                            "compare_to": 7
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "bettershulk:fireblackhole_timer",
+                            "change": 1
+                        },
+                        {
+                            "type": "origins:if_else_list",
+                            "actions": [
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 0
+                                    },
+                                    "action": {
+                                        "type": "origins:raycast",
+                                        "distance": 64,
+                                        "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 1 force @s"
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    },
+                                    "action": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:raycast",
+                                                "distance": 64,
+                                                "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 2 force @s"
+                                            },
+                                            {
+                                                "type": "origins:if_else",
+                                                "condition": {
+                                                    "type": "origins:equipped_item",
+                                                    "equipment_slot": "mainhand",
+                                                    "item_condition": {
+                                                        "type": "origins:nbt",
+                                                        "nbt": "{CustomModelData:54896}"
+                                                    }
+                                                },
+                                                "if_action": {
+                                                    "type": "origins:equipped_item_action",
+                                                    "equipment_slot": "mainhand",
+                                                    "action": {
+                                                        "type": "origins:modify",
+                                                        "modifier": "bettershulk:charge_1"
+                                                    }
+                                                },
+                                                "else_action": {
+                                                    "type": "origins:equipped_item_action",
+                                                    "equipment_slot": "offhand",
+                                                    "action": {
+                                                        "type": "origins:modify",
+                                                        "modifier": "bettershulk:charge_1"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "origins:delay",
+                                                "ticks": 1,
+                                                "action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "bettershulk:fireblackhole_charge",
+                                                    "change": 1,
+                                                    "operation": "set"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 2
+                                    },
+                                    "action": {
+                                        "type": "origins:raycast",
+                                        "distance": 64,
+                                        "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 3 force @s"
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 3
+                                    },
+                                    "action": {
+                                        "type": "origins:raycast",
+                                        "distance": 64,
+                                        "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 4 force @s"
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 4
+                                    },
+                                    "action": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:raycast",
+                                                "distance": 64,
+                                                "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 5 force @s"
+                                            },
+                                            {
+                                                "type": "origins:if_else",
+                                                "condition": {
+                                                    "type": "origins:equipped_item",
+                                                    "equipment_slot": "mainhand",
+                                                    "item_condition": {
+                                                        "type": "origins:nbt",
+                                                        "nbt": "{CustomModelData:54897}"
+                                                    }
+                                                },
+                                                "if_action": {
+                                                    "type": "origins:equipped_item_action",
+                                                    "equipment_slot": "mainhand",
+                                                    "action": {
+                                                        "type": "origins:modify",
+                                                        "modifier": "bettershulk:charge_2"
+                                                    }
+                                                },
+                                                "else_action": {
+                                                    "type": "origins:equipped_item_action",
+                                                    "equipment_slot": "offhand",
+                                                    "action": {
+                                                        "type": "origins:modify",
+                                                        "modifier": "bettershulk:charge_2"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "origins:delay",
+                                                "ticks": 1,
+                                                "action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "bettershulk:fireblackhole_charge",
+                                                    "change": 4,
+                                                    "operation": "set"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 5
+                                    },
+                                    "action": {
+                                        "type": "origins:raycast",
+                                        "distance": 64,
+                                        "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 6 force @s"
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 6
+                                    },
+                                    "action": {
+                                        "type": "origins:raycast",
+                                        "distance": 64,
+                                        "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 7 force @s"
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:resource",
+                                        "resource": "bettershulk:fireblackhole_charge",
+                                        "comparison": "==",
+                                        "compare_to": 7
+                                    },
+                                    "action": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:raycast",
+                                                "distance": 64,
+                                                "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 8 force @s"
+                                            },
+                                            {
+                                                "type": "origins:if_else",
+                                                "condition": {
+                                                    "type": "origins:equipped_item",
+                                                    "equipment_slot": "mainhand",
+                                                    "item_condition": {
+                                                        "type": "origins:nbt",
+                                                        "nbt": "{CustomModelData:54898}"
+                                                    }
+                                                },
+                                                "if_action": {
+                                                    "type": "origins:equipped_item_action",
+                                                    "equipment_slot": "mainhand",
+                                                    "action": {
+                                                        "type": "origins:modify",
+                                                        "modifier": "bettershulk:charge_3"
+                                                    }
+                                                },
+                                                "else_action": {
+                                                    "type": "origins:equipped_item_action",
+                                                    "equipment_slot": "offhand",
+                                                    "action": {
+                                                        "type": "origins:modify",
+                                                        "modifier": "bettershulk:charge_3"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "origins:delay",
+                                                "ticks": 1,
+                                                "action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "bettershulk:fireblackhole_charge",
+                                                    "change": 7,
+                                                    "operation": "set"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "else_action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "bettershulk:fireblackhole_charge",
+                        "comparison": "==",
+                        "compare_to": 7
+                    },
+                    "if_action": {
+                        "type": "origins:raycast",
+                        "distance": 64,
+                        "command_along_ray": "particle dragon_breath ~ ~ ~ 0 0 0 0.01 8 force @s"
+                    }
+                }
+            },
+            {
+                "type": "origins:area_of_effect",
+                "bientity_condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "inverted": true,
+                                "type": "origins:nbt",
+                                "nbt": "{Tags: ['black_hole']}"
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54896}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54896}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54897}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54897}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54898}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54898}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54899}"
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{CustomModelData:54899}"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "bientity_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:add_velocity",
+                            "z": -0.5
+                        },
+                        {
+                            "type": "origins:target_action",
+                            "action": {
+                                "type": "origins:spawn_particles",
+                                "particle": "minecraft:portal",
+                                "count": 2,
+                                "offset_y": 0.5,
+                                "spread": {
+                                    "x": 0.25,
+                                    "y": 0.5,
+                                    "z": 0.25
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:actor_action",
+                            "action": {
+                                "type": "origins:spawn_particles",
+                                "particle": "minecraft:portal",
+                                "count": 2,
+                                "offset_y": 0.5,
+                                "spread": {
+                                    "x": 0.25,
+                                    "y": 0.25,
+                                    "z": 0.25
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "bettershulk:fireblackhole_not_in_use_resource",
+                "change": 2,
+                "operation": "set"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s bettershulk:pullslow"
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 4,
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s bettershulk:pullslow"
+                }
+            }
+        ]
+    },
+    "key": {
+        "key": "key.use",
+        "continuous": true
+    }
+}

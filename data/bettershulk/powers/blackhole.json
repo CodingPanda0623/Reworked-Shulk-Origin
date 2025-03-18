@@ -1,0 +1,167 @@
+{
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 29,
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.generic.explode",
+                    "volume": 2
+                },
+                {
+                    "type": "origins:explode",
+                    "power": 5,
+                    "damage_self": false
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "particles": {
+        "type": "origins:particle",
+        "particle": {
+            "type": "minecraft:dust",
+            "params": "0.0 0.0 0.0 2"
+        },
+        "frequency": 2,
+        "count": 10,
+        "visible_while_invisible": true
+    },
+    "falling_blocks": {
+        "type": "origins:action_over_time",
+        "interval": 80,
+        "entity_action": {
+            "type": "origins:block_action_at",
+            "block_action": {
+                "type": "origins:area_of_effect",
+                "radius": 10,
+                "shape": "sphere",
+                "block_action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:blast_resistance",
+                                "comparison": "<",
+                                "compare_to": 800
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:in_tag",
+                                "tag": "minecraft:air"
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "function bettershulk:black_hole"
+                    }
+                }
+            }
+        }
+    },
+    "per_second": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:blackhole_timer",
+                    "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~1 ~ {Tags:['black_hole_particles'],Invisible:1b,Marker:1b}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "function bettershulk:black_hole_particles"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @e[tag=black_hole_particles,limit=1,sort=nearest]"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:block.portal.ambient",
+                    "volume": 1
+                }
+            ]
+        }
+    },
+    "pull": {
+        "type": "origins:action_over_time",
+        "interval": 2,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tp @s ~ ~ ~ ~30 ~"
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 16,
+                    "shape": "sphere",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "inverted": true,
+                            "type": "origins:power",
+                            "power": "bettershulk:fireblackhole"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:add_velocity",
+                        "z": -0.3
+                    }
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 4,
+                    "shape": "sphere",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "inverted": true,
+                            "type": "origins:power",
+                            "power": "bettershulk:fireblackhole"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:damage",
+                        "amount": 5,
+                        "damage_type": "cramming"
+                    }
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "shape": "sphere",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "inverted": true,
+                            "type": "origins:power",
+                            "power": "bettershulk:fireblackhole"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:damage",
+                        "amount": 10,
+                        "damage_type": "cramming"
+                    }
+                }
+            ]
+        }
+    }
+}

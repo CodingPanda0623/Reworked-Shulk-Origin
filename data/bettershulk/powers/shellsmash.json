@@ -1,0 +1,58 @@
+{
+    "name": "Shell Smash",
+    "description": "You can forcibly break your shell (or wait for it to break from attacks). While your shell is completely broken, you gain a significant speed boost, slight attack speed boost (negating the downside of heavy hitter), and can now properly swim in water. However, you also take slightly more damage from physical sources and lose your armor bonus.",
+    "type": "origins:multiple",
+    "smash": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "bettershulk:shell_resource",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "title @s actionbar {\"text\": \"Shell SMASH!\", \"color\": \"light_purple\"}"
+                }
+            ]
+        },
+        "key": {
+            "key": "key.loadToolbarActivator"
+        }
+    },
+    "speed": {
+        "type": "origins:conditioned_attribute",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "bettershulk:shell_resource",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "addition",
+            "value": 0.1
+        }
+    },
+    "vulnerability": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "inverted": true,
+            "type": "origins:in_tag",
+            "tag": "minecraft:bypasses_armor"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "bettershulk:shell_resource",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.1
+        }
+    }
+}

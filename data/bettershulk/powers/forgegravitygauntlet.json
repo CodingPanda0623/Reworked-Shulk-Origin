@@ -1,0 +1,173 @@
+{
+    "name": "Gravity Gauntlet",
+    "description": "Using the immense pressure of the overworld void, you can forge the Gravity Gauntlet, an extremely powerful weapon capable of pulling entities in and firing a devastating black hole. However, you must be inside the void taking damage to do this. Be careful!",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "To forge this item, pick up the ingredient and right click it on the other. The ingredients are: 64 shulker shells --> 64 crying obsidian = Compressed Reinforced Crying Obsidian, 64 end crystals --> 1 nether star = Empowered Nether Star, then use it on the Compressed Reinforced Crying Obsidian."
+        }
+    ],
+    "type": "origins:multiple",
+    "compressed_reinforced_crying_obsidian": {
+        "type": "origins:item_on_item",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_block",
+                    "block_condition": {
+                        "type": "origins:height",
+                        "comparison": "<",
+                        "compare_to": -128
+                    }
+                },
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:overworld"
+                }
+            ]
+        },
+        "using_item_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:shulker_shell"
+                    }
+                },
+                {
+                    "type": "origins:amount",
+                    "comparison": ">=",
+                    "compare_to": 64
+                }
+            ]
+        },
+        "on_item_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:crying_obsidian"
+                    }
+                },
+                {
+                    "type": "origins:amount",
+                    "comparison": ">=",
+                    "compare_to": 64
+                }
+            ]
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 64
+        },
+        "on_item_action": {
+            "type": "origins:consume",
+            "amount": 64
+        },
+        "result": {
+            "item": "minecraft:crying_obsidian",
+            "tag": "{display:{Name:'[{\"text\":\"Compressed Reinforced Crying Obsidian\",\"italic\":false,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"A large amount of crying obsidian\",\"italic\":false}]','[{\"text\":\"that has been reinforced with\",\"italic\":false}]','[{\"text\":\"shulker shells and compressed\",\"italic\":false}]','[{\"text\":\"with the force of the overworld void\",\"italic\":false}]']},Enchantments:[{}],tag:compressed_reinforced_crying_obsidian}"
+        }
+    },
+    "empowered_nether_star": {
+        "type": "origins:item_on_item",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_block",
+                    "block_condition": {
+                        "type": "origins:height",
+                        "comparison": "<",
+                        "compare_to": -128
+                    }
+                },
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:overworld"
+                }
+            ]
+        },
+        "using_item_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:end_crystal"
+                    }
+                },
+                {
+                    "type": "origins:amount",
+                    "comparison": ">=",
+                    "compare_to": 64
+                }
+            ]
+        },
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:nether_star"
+            }
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 64
+        },
+        "on_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "result": {
+            "item": "minecraft:nether_star",
+            "tag": "{display:{Name:'[{\"text\":\"Empowered Nether Star\",\"italic\":false,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"A nether star containing the\",\"italic\":false}]','[{\"text\":\"power of 64 end crystals\",\"italic\":false}]']},Enchantments:[{}],tag:empowered_nether_star}"
+        }
+    },
+    "gravity_gauntlet": {
+        "type": "origins:item_on_item",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_block",
+                    "block_condition": {
+                        "type": "origins:height",
+                        "comparison": "<",
+                        "compare_to": -128
+                    }
+                },
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:overworld"
+                }
+            ]
+        },
+        "using_item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{tag:empowered_nether_star}"
+        },
+        "on_item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{tag:compressed_reinforced_crying_obsidian}"
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "on_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "result": {
+            "item": "minecraft:netherite_axe"
+        },
+        "result_item_action": {
+            "type": "origins:modify",
+            "modifier": "bettershulk:gravity_gauntlet"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Duplicate",
+    "description": "Upon taking damage and being less than 75% health, you have a slight chance to duplicate, generating a friendly shulker where you are.",
+    "cooldown": 1,
+    "type": "origins:action_when_damage_taken",
+    "condition": {
+        "type": "origins:relative_health",
+        "comparison": "<",
+        "compare_to": 0.75
+    },
+    "entity_action": {
+        "type": "origins:chance",
+        "chance": 0.25,
+        "action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon minecraft:shulker ~ ~ ~ {DeathLootTable:\"minecraft:empty\",Tags:['shulkerfriend']}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "team join shulker @e[type=shulker,tag=shulkerfriend]"
+                }
+            ]
+        }
+    }
+}

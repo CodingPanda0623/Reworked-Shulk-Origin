@@ -1,0 +1,103 @@
+[
+    {
+        "function": "minecraft:set_name",
+        "entity": "this",
+        "name": {
+            "text": "Gravity Gauntlet",
+            "color": "dark_purple",
+            "italic": false
+        }
+    },
+    {
+        "function": "minecraft:set_nbt",
+        "tag": "{CustomModelData:54896,Unbreakable:1b}"
+    },
+    {
+        "function": "minecraft:set_attributes",
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.attack_damage",
+                "name": "Gauntlet Attack Damage",
+                "amount": 10,
+                "operation": "addition",
+                "slot": "mainhand"
+            },
+            {
+                "attribute": "minecraft:generic.attack_speed",
+                "name": "Gauntlet Attack Damage",
+                "amount": -2.4,
+                "operation": "addition",
+                "slot": "mainhand"
+            },
+            {
+                "attribute": "minecraft:generic.armor_toughness",
+                "name": "Gauntlet Armor Toughness",
+                "amount": 3,
+                "operation": "addition",
+                "slot": "mainhand"
+            },
+            {
+                "attribute": "minecraft:generic.armor",
+                "name": "Gauntlet Armor",
+                "amount": 6,
+                "operation": "addition",
+                "slot": "mainhand"
+            },
+            {
+                "attribute": "minecraft:generic.armor_toughness",
+                "name": "Gauntlet Armor Toughness",
+                "amount": 3,
+                "operation": "addition",
+                "slot": "offhand"
+            },
+            {
+                "attribute": "minecraft:generic.armor",
+                "name": "Gauntlet Armor",
+                "amount": 6,
+                "operation": "addition",
+                "slot": "offhand"
+            }
+        ]
+    },
+    {
+        "function": "minecraft:set_lore",
+        "entity": "this",
+        "lore": [
+            {
+                "text": "A gauntlet forged in the depths of the Void,",
+                "color": "light_purple",
+                "italic": false
+            },
+            {
+                "text": "able to pull in enemies by manipulating gravity.",
+                "color": "light_purple",
+                "italic": false
+            },
+            {
+                "text": "or creating a devastating and destructive black hole.",
+                "color": "light_purple",
+                "italic": false
+            }
+        ]
+    },
+    {
+        "function": "apoli:add_power",
+        "power": "bettershulk:gravitypull",
+        "slot": "mainhand"
+    },
+    {
+        "function": "apoli:add_power",
+        "power": "bettershulk:fireblackhole",
+        "slot": "mainhand"
+    },
+    {
+        "function": "apoli:add_power",
+        "power": "bettershulk:gravitypull",
+        "slot": "offhand"
+    },
+    {
+        "function": "apoli:add_power",
+        "power": "bettershulk:fireblackhole",
+        "slot": "offhand"
+    }
+]
